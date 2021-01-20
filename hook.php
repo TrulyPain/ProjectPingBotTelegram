@@ -71,7 +71,7 @@ if (strpos($message, "/ping") === 0 && substr($message, 6) == $chatId) {
 
 //Copyright
 if (strpos($message, "/copyright") === 0) {
-    file_get_contents($path."/sendmessage?chat_id=".$chatId."&text=Sorry, you can not ping yourself. But if you're lonely you can write with our dev @bunnybloyt.");
+    file_get_contents($path."/sendmessage?chat_id=".$chatId."&text=Copyright info at the official GitHub project: https://github.com/bunnybloyt/ProjectPingBotTelegram");
 } else
 
 //Catch other commands
