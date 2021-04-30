@@ -8,7 +8,7 @@ __________                   __               __    __________.__               
  |____|     |__|   \____/\__|  |\___  >\___  >__|    |____|   |__|___|  /\___  /   |______  /\____/|__|  
                         \______|    \/     \/                         \//_____/           \/             
 
-- Telegram edition - Coded by @bunnybloyt at GitHub -
+- Telegram edition - Coded by @TrulyPain at GitHub -
 
 With the help of:
     @Kaninis(Telegram) - Beta Tester
