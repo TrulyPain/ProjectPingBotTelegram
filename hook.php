@@ -70,7 +70,8 @@ if (strpos($message, "/ping") === 0 && strlen(substr($message, 6)) < 5) {
 //Send ping
 if (strpos($message, "/ping") === 0 && substr($message, 6) != $chatId) {
     $location = substr($message, 6);
-    file_get_contents($path."/sendmessage?chat_id=".$chatId."&text=Sending your ping.");
+    $recipient = json_decode(file_get_contents($path."/getChat?chat_id=".$location), TRUE);
+    file_get_contents($path."/sendmessage?chat_id=".$chatId."&text=Pinging @".$recipient["result"]["username"]);
     sleep(0.2);
     file_get_contents($path."/sendmessage?chat_id=".$location."&text=You got a ping from @$username. You can respond to it by pinging them back using '/ping $chatId'.");
     sleep(0.1);
@@ -85,7 +86,7 @@ if (strpos($message, "/invite") === 0) {
 
 //Is sender same as receiver?
 if (strpos($message, "/ping") === 0 && substr($message, 6) == $chatId) {
-    file_get_contents($path."/sendmessage?chat_id=".$chatId."&text=Sorry, you can not ping yourself. But if you're lonely you can write with our dev $developername.");
+    file_get_contents($path."/sendmessage?chat_id=".$chatId."&text=Sorry, you can not ping yourself. But if you're lonely you can always chat with our dev $developername.");
 } else
 
 //Copyright
