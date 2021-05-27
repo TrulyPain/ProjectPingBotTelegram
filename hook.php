@@ -39,9 +39,18 @@ if ($message == null) {
 } else
 
 //First time
-if (strpos($message, "/start") === 0) {
-    file_get_contents($path."/sendmessage?chat_id=".$chatId."&text=Please notice that this is not the official Project Ping Bot, which you can add here: http://t.me/ProjectPingBot. Always be careful about your data when you use mods like this.");sleep(0.5);
+if ($message == "/start") {
     file_get_contents($path."/sendmessage?chat_id=".$chatId."&text=Hello $firstname! Welcome to the $botname. To ping someone simple write '/ping' followed by it's ID. To get your ID, simply write '/id' to me. Good luck pinging.");
+} else
+
+//Referred user
+if (strpos($message, "/start ") === 0) {
+    $location = substr($message, 7);
+    file_get_contents($path."/sendmessage?chat_id=".$chatId."&text=Hello $firstname! Welcome to $botname. To ping someone simple write '/ping' followed by it's ID. To get your ID, simply write '/id' to me. Good luck pinging.");
+    sleep(0.2);
+    file_get_contents($path."/sendmessage?chat_id=".$location."&text=You have now referred user @$username. You can ping them using '/ping $chatId'.");
+    sleep(0.1);
+    file_get_contents($path."/sendmessage?chat_id=".$chatId."&text=We have notified the user that invited you. Btw, their ping id is $location");
 } else
 
 //Get ID
@@ -64,6 +73,12 @@ if (strpos($message, "/ping") === 0 && substr($message, 6) != $chatId) {
     file_get_contents($path."/sendmessage?chat_id=".$chatId."&text=The ping is sent.");
 } else
 
+//Invite user
+if (strpos($message, "/invite") === 0) {
+    $me = json_decode(file_get_contents($path."/getMe"), TRUE);
+    file_get_contents($path."/sendmessage?chat_id=".$chatId."&text=Your refer link are: https://telegram.me/".$me["result"]["username"]."?start=$chatId");
+} else
+
 //Is sender same as receiver?
 if (strpos($message, "/ping") === 0 && substr($message, 6) == $chatId) {
     file_get_contents($path."/sendmessage?chat_id=".$chatId."&text=Sorry, you can not ping yourself. But if you're lonely you can write with our dev $developername.");
@@ -71,12 +86,12 @@ if (strpos($message, "/ping") === 0 && substr($message, 6) == $chatId) {
 
 //Copyright
 if (strpos($message, "/copyright") === 0) {
-    file_get_contents($path."/sendmessage?chat_id=".$chatId."&text=Copyright info at the official GitHub project: https://github.com/bunnybloyt/ProjectPingBotTelegram");
+    file_get_contents($path."/sendmessage?chat_id=".$chatId."&text=Copyright info at the official GitHub project: https://github.com/trulypain/ProjectPingBotTelegram");
 } else
 
 //Catch other commands
 {
     file_get_contents($path."/sendmessage?chat_id=".$chatId."&text=Oh, that command is new for me. Sorry.");
     sleep(1);
-    file_get_contents($path."/sendmessage?chat_id=".$chatId."&text=Would you want to add that command? Then you can always use the source code on GitHub to make your own version of this bot. https://github.com/bunnybloyt/ProjectPingBotTelegram");
+    file_get_contents($path."/sendmessage?chat_id=".$chatId."&text=Would you want to add that command? Then you can always use the source code on GitHub to make your own version of this bot. https://github.com/trulypain/ProjectPingBotTelegram");
 }
