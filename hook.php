@@ -47,6 +47,10 @@ if ($message == "/start") {
 if (strpos($message, "/start ") === 0) {
     $location = substr($message, 7);
     file_get_contents($path."/sendmessage?chat_id=".$chatId."&text=Hello $firstname! Welcome to $botname. To ping someone simple write '/ping' followed by it's ID. To get your ID, simply write '/id' to me. Good luck pinging.");
+    if($location == $chatId) {
+        file_get_contents($path."/sendmessage?chat_id=".$chatId."&text=You can't refer yourself, lol.");
+        return;
+    }
     sleep(0.2);
     file_get_contents($path."/sendmessage?chat_id=".$location."&text=You have now referred user @$username. You can ping them using '/ping $chatId'.");
     sleep(0.1);
@@ -76,7 +80,7 @@ if (strpos($message, "/ping") === 0 && substr($message, 6) != $chatId) {
 //Invite user
 if (strpos($message, "/invite") === 0) {
     $me = json_decode(file_get_contents($path."/getMe"), TRUE);
-    file_get_contents($path."/sendmessage?chat_id=".$chatId."&text=Your refer link are: https://telegram.me/".$me["result"]["username"]."?start=$chatId");
+    file_get_contents($path."/sendmessage?chat_id=".$chatId."&text=Your invite link are: https://telegram.me/".$me["result"]["username"]."?start=$chatId");
 } else
 
 //Is sender same as receiver?
