@@ -1,3 +1,14 @@
+# This project is archived
+I am sorry to announce that I am going to be archiving my GitHub project "Project Ping Bot" due to lack of time and other priorities. This project was an important learning experience for me, but I have reached a point where I need to focus on other things.
+
+I want to thank everyone who has supported me and my project. I have learned a lot from working on "Project Ping Bot" and I am grateful for the interest and encouragement that you all have shown.
+
+If you are currently using "Project Ping Bot" and need support, please don't hesitate to reach out to me. I will do my best to provide any assistance I can.
+
+Best,
+
+Jamie Blomerus
+
 # How to get started?
 To get started follow the steps below:
 1. Start by reading the license.
